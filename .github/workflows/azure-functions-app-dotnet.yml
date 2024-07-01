@@ -36,10 +36,12 @@ jobs:
       uses: actions/checkout@v4
 
     # If you want to use Azure RBAC instead of Publish Profile, then uncomment the task below
-    # - name: 'Login via Azure CLI'
-    #   uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_RBAC_CREDENTIALS }} # set up AZURE_RBAC_CREDENTIALS secrets in your repository
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_623F763C2A324385B63CE0B9397BCCDF }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1359DA801EAA477F97C8B309809E6972 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_04EFD7B37AAD42DDB2F63C957D5CC755 }}
 
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
       uses: actions/setup-dotnet@v3
